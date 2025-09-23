@@ -3,42 +3,29 @@
 <head>
   <meta charset="utf-8" />
   <title>Ativação de Garantia • Sistema Oficial</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#3b82f6" />
   <meta name="description" content="Ative sua garantia oficial de forma rápida e segura. Proteção completa com suporte especializado." />
-  <meta name="color-scheme" content="light only" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Ativação de Garantia • Sistema Oficial">
-  <meta property="og:description" content="Ative sua garantia oficial de forma rápida e segura. Proteção completa com suporte especializado.">
-  <meta property="og:type" content="website">
-
-  <!-- Favicon (SVG inline) -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%233b82f6' d='M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%233b82f6' d='M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z'/%3E%3C/svg%3E">
 
   <!-- Fonte -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      /* Cores base */
       --bg: #f7f9fc;
-      --bg-2: #ffffff;
       --ink: #0f172a;
       --muted: #64748b;
       --line: #e2e8f0;
-
-      /* Marca */
       --brand: #3b82f6;
       --brand-2: #059669;
       --ok: #10b981;
-
-      /* UI */
-      --glass: rgba(255,255,255,0.65);
-      --radius: 16px;
+      --radius: 14px;
       --radius-sm: 12px;
-      --shadow: 0 10px 30px rgba(2, 8, 23, 0.08);
-      --shadow-lg: 0 18px 48px rgba(15, 23, 42, 0.15);
+      --shadow: 0 8px 22px rgba(2, 8, 23, 0.08);
+      --shadow-lg: 0 14px 32px rgba(15, 23, 42, 0.16);
+      --safe-bottom: env(safe-area-inset-bottom, 16px);
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
@@ -46,266 +33,192 @@
     body{
       font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
       color:var(--ink);
-      background:
-        radial-gradient(1200px 600px at 70% -10%, rgba(59,130,246,.08), transparent 55%),
-        radial-gradient(1000px 600px at -10% 30%, rgba(5,150,105,.08), transparent 55%),
-        linear-gradient(180deg, var(--bg) 0%, #fff 100%);
+      background: linear-gradient(180deg, var(--bg) 0%, #fff 100%);
       line-height:1.6;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      -webkit-tap-highlight-color: transparent;
     }
+    img{max-width:100%;height:auto;display:block}
+    a{color:inherit}
 
-    .container{max-width:1060px;margin:0 auto;padding:clamp(16px,4vw,28px);}
+    .container{width:100%;max-width:720px;margin:0 auto;padding:16px}
+    .stack{display:grid;gap:12px}
 
-    /* Header */
+    /* ===== HEADER (card) – MOBILE-FIRST ===== */
     .header{
       background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
-      color:#fff;
-      border-radius:var(--radius);
-      padding:clamp(20px,4vw,28px);
-      box-shadow: var(--shadow-lg);
-      display:flex; align-items:center; justify-content:space-between; gap:16px;
-      position:relative; overflow:hidden;
+      color:#fff; border-radius: var(--radius);
+      padding:16px; box-shadow: var(--shadow-lg);
     }
-    .header::after{
-      content:"";
-      position:absolute; inset:-40% -40% auto auto;
-      width:520px; height:520px; border-radius:50%;
-      background: rgba(255,255,255,.1);
-      filter: blur(40px);
-    }
-    .header-left{ display:flex; align-items:center; gap:14px }
-    .header-icon{
-      width:56px;height:56px;display:grid;place-items:center;border-radius:14px;
-      background: rgba(255,255,255,.18);
-      backdrop-filter: blur(6px);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.3);
+    .head-line{ display:flex; gap:12px; align-items:center }
+    .logo{
+      width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+      background: rgba(255,255,255,.22);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.35);
       flex-shrink:0;
     }
-    .header h1{ font-size:clamp(22px,5vw,30px); font-weight:800; letter-spacing:-.02em; }
-    .header-sub{ opacity:.95; font-size:.98rem; }
+    .logo svg{width:22px;height:22px;color:#fff}
+    .title h1{font-size: clamp(18px,5.2vw,24px);font-weight:800;letter-spacing:-.02em;line-height:1.15}
+    .title .sub{font-size:.95rem;opacity:.95}
 
-    .cta{ display:flex; gap:10px; flex-wrap:wrap }
+    /* Botões: 100% largura, alturas iguais */
+    .cta{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: 1fr;    /* uma coluna no mobile */
+      gap:8px;
+      width:100%;
+    }
     .btn{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:12px 16px; border-radius:12px; border:1px solid rgba(255,255,255,.35);
-      background: rgba(255,255,255,.15);
-      color:#fff; text-decoration:none; font-weight:700; transition:.25s;
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      width:100%;
+      min-height:48px;               /* altura consistente para toque */
+      padding: 12px 14px;
+      border-radius: 10px;
+      border:1px solid rgba(255,255,255,.35);
+      background: rgba(255,255,255,.16);
+      color:#fff; text-decoration:none; font-weight:800; font-size:1rem;
+      transition: transform .15s ease;
+      touch-action: manipulation;
     }
-    .btn:hover{ transform: translateY(-2px); }
-    .btn svg{ width:18px; height:18px; }
+    .btn:active{ transform: scale(.98) }
 
-    /* Sections */
-    .benefits{ padding: clamp(18px,4vw,28px) 0; }
-    .benefits h2{ font-size:clamp(20px,3vw,26px); text-align:center; font-weight:800; margin-bottom:16px; }
-    .benefit-grid{
-      display:grid; gap:14px; grid-template-columns: repeat(4,1fr);
+    /* ===== Benefits ===== */
+    .section{ padding: 14px 0 }
+    .section h2{ font-size: clamp(18px,4.8vw,22px); font-weight:800; letter-spacing:-.01em; margin-bottom:10px }
+    .grid{ display:grid; gap:10px }
+    .card{
+      background:#fff; border:1px solid var(--line); border-radius: var(--radius-sm);
+      padding:12px; box-shadow: var(--shadow);
     }
-    .benefit-card{
-      background: var(--bg-2); border:1px solid var(--line);
-      border-radius: var(--radius-sm); padding:16px;
-      box-shadow: var(--shadow);
-      transition:.25s;
+    .benefit{ display:flex; gap:10px; align-items:flex-start }
+    .b-ico{
+      width:38px;height:38px;border-radius:10px;display:grid;place-items:center;
+      background: rgba(59,130,246,.12); color: var(--brand); flex-shrink:0; font-size:18px;
     }
-    .benefit-card:hover{ transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-    .benefit-content{ display:flex; align-items:flex-start; gap:12px; }
-    .benefit-icon{
-      width:40px; height:40px; border-radius:10px; display:grid; place-items:center;
-      background: rgba(59,130,246,.12); color: var(--brand); flex-shrink:0;
-    }
-    .benefit-text h3{ font-size:1rem; font-weight:700; margin-bottom:4px; }
-    .benefit-text p{ font-size:.92rem; color:var(--muted); }
+    .benefit h3{ font-size:1rem; font-weight:700; margin-bottom:2px }
+    .benefit p{ color:var(--muted); font-size:.95rem }
 
-    .form-section{ padding: clamp(8px,4vw,20px) 0 clamp(24px,6vw,36px); }
-    .form-header{ text-align:center; margin-bottom:14px; }
-    .form-header h2{ font-size:clamp(20px,3vw,26px); font-weight:800; }
-    .form-header p{ color:var(--muted); font-size:.98rem; }
-
-    .form-container{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background: var(--glass);
-      backdrop-filter: blur(10px);
-      box-shadow: var(--shadow-lg);
-      padding: clamp(14px,3vw,18px);
-    }
-    .security-notice{
-      display:flex; align-items:center; gap:10px;
+    /* ===== Form ===== */
+    .notice{
+      display:flex; gap:8px; align-items:center;
       background: rgba(16,185,129,.08);
       border:1px solid rgba(16,185,129,.25);
-      color:#065f46; padding:10px 12px; border-radius:12px; margin-bottom:12px;
-      font-weight:600;
+      color:#065f46; padding:10px 12px; border-radius:10px; font-weight:700;
     }
+    .notice .dot{ width:10px; height:10px; border-radius:999px; background: var(--ok) }
 
-    .iframe-wrap{
-      position:relative; overflow:hidden;
-      border-radius:12px; border:1px solid var(--line); background:#fff;
+    .iframe-shell{
+      position:relative; overflow:hidden; border-radius: var(--radius);
+      border:1px solid var(--line); background:#fff; box-shadow: var(--shadow-lg);
+      margin-top:10px;
     }
-    .skeleton{
-      position:absolute; inset:0; display:grid; place-items:center; gap:10px;
-      background: linear-gradient(90deg, #f1f5f9, #ffffff, #f1f5f9);
+    /* skeleton leve */
+    .sk{
+      position:absolute; inset:0; z-index:1;
+      display:grid; place-items:center; gap:8px; padding:12px;
+      background: linear-gradient(90deg, #f2f5f9 0%, #ffffff 50%, #f2f5f9 100%);
       background-size: 200% 100%;
-      animation: wave 1.4s ease-in-out infinite;
-      z-index:1;
+      animation: wave 1.2s ease-in-out infinite;
     }
-    @keyframes wave{ 0%{background-position: 0% 0} 100%{background-position: -200% 0} }
-    .s-bar{ width:min(680px,90%); height:14px; border-radius:999px; background: rgba(148,163,184,.35); }
-    .s-bar.sm{ width:min(520px,84%); height:12px; opacity:.8 }
-    .s-bar.xs{ width:min(360px,72%); height:10px; opacity:.6 }
+    @keyframes wave{ 0%{ background-position: 0% 0 } 100%{ background-position: -200% 0 } }
+    .bar{ width: 88%; max-width: 520px; height:12px; border-radius:999px; background: rgba(148,163,184,.35) }
+    .bar.sm{ width:72%; height:10px; opacity:.8 }
+    .bar.xs{ width:56%; height:8px; opacity:.65 }
 
-    .form-iframe{ width:100%; height: 1200px; border:0; display:block; position:relative; z-index:2; }
+    iframe.form{
+      width:100%;
+      height: 1650px;        /* altura confortável para celular */
+      border:0; display:block; position:relative; z-index:2;
+    }
 
+    /* ===== Footer ===== */
     .footer{
-      margin-top: clamp(22px,5vw,40px);
-      background: rgba(241,245,249,.7);
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      padding: clamp(16px,3vw,20px);
-      box-shadow: var(--shadow);
+      margin-top: 16px; background:#f1f5f9; border:1px solid var(--line);
+      border-radius: var(--radius); padding:14px;
     }
-    .footer h3{ text-align:center; font-size:1.1rem; margin-bottom:6px; }
-    .footer-subtitle{ text-align:center; color:var(--muted); margin-bottom:16px; }
-    .contact-grid{ display:grid; gap:12px; grid-template-columns: repeat(3,1fr); }
-    .contact-card{
-      background:#fff; border:1px solid var(--line); border-radius:12px; padding:12px; box-shadow: var(--shadow);
-      transition:.2s;
-    }
-    .contact-card:active{ transform: scale(.98); }
-    .contact-info p:first-child{ font-weight:600; }
-    .contact-info p{ color:var(--muted); font-size:.95rem; }
+    .footer h3{ text-align:center; font-size:1rem; margin-bottom:4px }
+    .footer-sub{ text-align:center; color:var(--muted); font-size:.95rem; margin-bottom:10px }
+    .contact{ display:grid; gap:10px }
+    .contact .item{ background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px }
+    .contact .item p:first-child{ font-weight:700 }
+    .copy{ text-align:center; color:var(--muted); font-size:.9rem; margin-top:10px }
 
-    .footer-bottom{ text-align:center; border-top:1px solid var(--line); margin-top:14px; padding-top:12px; color:var(--muted); font-size:.9rem }
-
-    /* WhatsApp FAB */
+    /* ===== WhatsApp FAB (área segura iOS) ===== */
     .whats-fab{
-      position: fixed; right: 18px; bottom: 18px;
-      width: 58px; height: 58px; border-radius: 999px;
-      display: grid; place-items: center;
-      background: #25D366; color: #fff;
-      box-shadow: 0 14px 38px rgba(37,211,102,.35);
-      border: none; cursor: pointer; z-index: 50;
-      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+      position: fixed; right: 16px; bottom: calc(16px + var(--safe-bottom));
+      width:56px; height:56px; border-radius:999px; display:grid; place-items:center;
+      background:#25D366; color:#fff; box-shadow: 0 14px 36px rgba(37,211,102,.35);
+      text-decoration:none; z-index:60; transition: transform .15s ease;
+      touch-action: manipulation;
     }
-    .whats-fab:hover{ transform: translateY(-2px); box-shadow: 0 18px 46px rgba(37,211,102,.45); }
-    .whats-fab:active{ transform: translateY(0); filter: brightness(.95); }
-    .whats-fab svg{ width: 28px; height: 28px; display:block; }
-
-    /* Responsivo */
-    @media (max-width:1020px){
-      .benefit-grid{ grid-template-columns: repeat(2,1fr); }
-      .contact-grid{ grid-template-columns: 1fr; }
-    }
-    @media (max-width:560px){
-      .benefit-grid{ grid-template-columns: 1fr; }
-      .form-iframe{ height: 1500px; } /* forms longos no mobile */
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      *{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
-    }
+    .whats-fab:active{ transform: scale(.98) }
+    .whats-fab svg{ width:26px; height:26px }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Header -->
-    <header class="header" role="banner" aria-label="Cabeçalho">
-      <div class="header-left">
-        <div class="header-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-            <path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
-          </svg>
+  <div class="container stack">
+    <!-- HEADER / CARD -->
+    <header class="header" role="banner" aria-label="Ativação de Garantia">
+      <div class="head-line">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
         </div>
-        <div>
+        <div class="title">
           <h1>Ativação de Garantia</h1>
-          <div class="header-sub">Proteja seu investimento com nossa garantia oficial</div>
+          <div class="sub">Processo oficial, rápido e seguro.</div>
         </div>
       </div>
-      <nav class="cta" aria-label="Atalhos">
-        <a class="btn" href="#beneficios">Benefícios</a>
-        <a class="btn" href="#ativar">Ativar agora</a>
-        <!-- CTA WhatsApp no cabeçalho -->
-        <a class="btn" href="https://wa.me/5511971374517?text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20com%20a%20garantia."
-           target="_blank" rel="noopener" aria-label="Atendimento pelo WhatsApp">
-          <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
-            <path d="M19.11 17.33c-.27-.13-1.6-.78-1.85-.87-.25-.1-.43-.13-.6.13-.18.27-.7.86-.86 1.03-.16.18-.32.2-.6.07-.27-.13-1.13-.41-2.16-1.32-.8-.71-1.35-1.58-1.51-1.85-.16-.27-.02-.41.11-.54.11-.11.27-.29.41-.43.14-.14.18-.23.27-.39.09-.18.05-.33-.02-.46-.07-.13-.6-1.44-.82-1.98-.22-.53-.44-.46-.6-.46-.16 0-.33-.02-.5-.02-.18 0-.46.07-.7.33-.25.27-.95.93-.95 2.27s.97 2.64 1.11 2.82c.14.18 1.91 2.92 4.63 4.1.65.28 1.16.45 1.56.58.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.82-1.27.22-.63.22-1.17.15-1.27-.06-.09-.24-.16-.51-.29z"/>
-            <path d="M27.1 4.9C24.2 2 20.3.5 16.2.5 7.8.5 1 7.3 1 15.7c0 2.7.7 5.3 2.1 7.6L1 31l7-2.1c2.3 1.3 4.9 2.1 7.6 2.1 8.4 0 15.2-6.8 15.2-15.2 0-4.1-1.6-8-4.6-10.9z"/>
-          </svg>
-          WhatsApp
-        </a>
+
+      <!-- BOTÕES IGUAIS (WhatsApp removido do topo) -->
+      <nav class="cta" aria-label="Ações">
+        <a class="btn" href="#beneficios" aria-label="Ver benefícios">Benefícios</a>
+        <a class="btn" href="#ativar" aria-label="Ir para o formulário">Ativar agora</a>
       </nav>
     </header>
 
-    <!-- Benefits -->
-    <section id="beneficios" class="benefits" aria-labelledby="beneficios-title">
+    <!-- BENEFÍCIOS -->
+    <section id="beneficios" class="section" aria-labelledby="beneficios-title">
       <h2 id="beneficios-title">Por que ativar sua garantia?</h2>
-      <div class="benefit-grid">
-        <article class="benefit-card">
-          <div class="benefit-content">
-            <div class="benefit-icon" aria-hidden="true">🛡️</div>
-            <div class="benefit-text">
-              <h3>Proteção Completa</h3>
-              <p>Cobertura contra defeitos de fabricação com certificado digital.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="benefit-card">
-          <div class="benefit-content">
-            <div class="benefit-icon" aria-hidden="true">⚡</div>
-            <div class="benefit-text">
-              <h3>Ativação Rápida</h3>
-              <p>Processo simples em menos de 2 minutos, sem fricção.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="benefit-card">
-          <div class="benefit-content">
-            <div class="benefit-icon" aria-hidden="true">👩‍🔧</div>
-            <div class="benefit-text">
-              <h3>Suporte Especializado</h3>
-              <p>Atendimento prioritário para clientes com garantia ativa.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="benefit-card">
-          <div class="benefit-content">
-            <div class="benefit-icon" aria-hidden="true">🔒</div>
-            <div class="benefit-text">
-              <h3>Privacidade</h3>
-              <p>Dados tratados com boas práticas e apenas para esta finalidade.</p>
-            </div>
-          </div>
-        </article>
+      <div class="grid">
+        <div class="card benefit">
+          <div class="b-ico">🛡️</div>
+          <div><h3>Proteção Completa</h3><p>Cobertura contra defeitos de fabricação com certificado digital.</p></div>
+        </div>
+        <div class="card benefit">
+          <div class="b-ico">⚡</div>
+          <div><h3>Ativação Rápida</h3><p>Preencha e finalize em menos de 2 minutos.</p></div>
+        </div>
+        <div class="card benefit">
+          <div class="b-ico">👩‍🔧</div>
+          <div><h3>Suporte Prioritário</h3><p>Canal dedicado para clientes com garantia ativa.</p></div>
+        </div>
+        <div class="card benefit">
+          <div class="b-ico">🔒</div>
+          <div><h3>Privacidade</h3><p>Dados usados somente para a finalidade do serviço.</p></div>
+        </div>
       </div>
     </section>
 
-    <!-- Form -->
-    <section id="ativar" class="form-section" aria-labelledby="form-title">
-      <div class="form-header">
-        <h2 id="form-title">Formulário de Ativação</h2>
-        <p>Preencha os dados abaixo para ativar sua garantia oficial.</p>
-      </div>
-
-      <div class="form-container">
-        <div class="security-notice" role="status" aria-live="polite">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 2a7 7 0 0 1 7 7v3h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2h1V9a7 7 0 0 1 7-7Z"/>
-          </svg>
-          Suas informações são enviadas com segurança.
+    <!-- FORMULÁRIO -->
+    <section id="ativar" class="section" aria-labelledby="form-title">
+      <h2 id="form-title">Formulário de Ativação</h2>
+      <div class="stack">
+        <div class="notice" role="status" aria-live="polite">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Ambiente seguro. Preencha o formulário abaixo.</span>
         </div>
 
-        <div class="iframe-wrap">
-          <div class="skeleton" id="skeleton">
-            <div class="s-bar"></div>
-            <div class="s-bar sm"></div>
-            <div class="s-bar xs"></div>
+        <div class="iframe-shell">
+          <div class="sk" id="sk">
+            <div class="bar"></div>
+            <div class="bar sm"></div>
+            <div class="bar xs"></div>
           </div>
 
-          <!-- TROQUE o src abaixo pela sua URL do Google Forms, se necessário -->
+          <!-- TROQUE o src pelo seu Google Forms se for outro -->
           <iframe
-            class="form-iframe"
+            class="form"
             title="Formulário de Ativação de Garantia"
             src="https://docs.google.com/forms/d/e/1FAIpQLScGKZgmlSkm_CeESHsEyMlGibFutuNW8LPtFcGggPNWcdvvTw/viewform?embedded=true"
             loading="lazy"
@@ -313,65 +226,48 @@
           </iframe>
         </div>
 
-        <p style="text-align:center; margin-top:10px; color:var(--muted); font-size:.95rem">
+        <p style="text-align:center;color:var(--muted);font-size:.95rem">
           Se o formulário não aparecer, <a href="https://docs.google.com/forms/d/e/1FAIpQLScGKZgmlSkm_CeESHsEyMlGibFutuNW8LPtFcGggPNWcdvvTw/viewform" target="_blank" rel="noopener">abra aqui</a>.
         </p>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer" role="contentinfo" aria-label="Contato e informações">
+    <!-- CONTATO -->
+    <footer class="footer" role="contentinfo">
       <h3>Precisa de ajuda?</h3>
-      <p class="footer-subtitle">Nossa equipe está pronta para atender você.</p>
-
-      <div class="contact-grid">
-        <div class="contact-card">
-          <div class="contact-info">
-            <p>Telefone</p>
-            <p>(11) 97137-4517</p>
-          </div>
-        </div>
-        <div class="contact-card">
-          <div class="contact-info">
-            <p>E-mail</p>
-            <p>suporte@garantia.com</p>
-          </div>
-        </div>
-        <div class="contact-card">
-          <div class="contact-info">
-            <p>Atendimento</p>
-            <p>Seg a Sex: 8h–18h • Sáb: 8h–12h</p>
-          </div>
-        </div>
+      <p class="footer-sub">Nossa equipe está pronta para atender você.</p>
+      <div class="contact">
+        <div class="item"><p>Telefone</p><p>(11) 97137-4517</p></div>
+        <div class="item"><p>E-mail</p><p>suporte@garantia.com</p></div>
+        <div class="item"><p>Atendimento</p><p>Seg a Sex: 8h–18h • Sáb: 8h–12h</p></div>
       </div>
-
-      <div class="footer-bottom">
-        © 2024 Sistema de Garantia. Todos os direitos reservados.
-      </div>
+      <div class="copy">© 2024 Sistema de Garantia. Todos os direitos reservados.</div>
     </footer>
   </div>
 
-  <!-- FAB flutuante do WhatsApp -->
+  <!-- FAB WhatsApp (ícone branco fixo) -->
   <a class="whats-fab"
      href="https://wa.me/5511971374517?text=Ol%C3%A1%2C%20quero%20ativar%20minha%20garantia."
      target="_blank" rel="noopener" aria-label="Fale conosco no WhatsApp">
-    <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
-      <path d="M19.11 17.33c-.27-.13-1.6-.78-1.85-.87-.25-.1-.43-.13-.6.13-.18.27-.7.86-.86 1.03-.16.18-.32.2-.6.07-.27-.13-1.13-.41-2.16-1.32-.8-.71-1.35-1.58-1.51-1.85-.16-.27-.02-.41.11-.54.11-.11.27-.29.41-.43.14-.14.18-.23.27-.39.09-.18.05-.33-.02-.46-.07-.13-.6-1.44-.82-1.98-.22-.53-.44-.46-.6-.46-.16 0-.33-.02-.5-.02-.18 0-.46.07-.7.33-.25.27-.95.93-.95 2.27s.97 2.64 1.11 2.82c.14.18 1.91 2.92 4.63 4.1.65.28 1.16.45 1.56.58.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.82-1.27.22-.63.22-1.17.15-1.27-.06-.09-.24-.16-.51-.29z"/>
-      <path d="M27.1 4.9C24.2 2 20.3.5 16.2.5 7.8.5 1 7.3 1 15.7c0 2.7.7 5.3 2.1 7.6L1 31l7-2.1c2.3 1.3 4.9 2.1 7.6 2.1 8.4 0 15.2-6.8 15.2-15.2 0-4.1-1.6-8-4.6-10.9zM16.2 28c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.1 1.2 1.2-4.1-.3-.5C4.6 20.5 4 18.1 4 15.7 4 8.9 9.3 3.6 16.1 3.6c3.3 0 6.4 1.3 8.7 3.6s3.6 5.4 3.6 8.7C28.4 22.4 23.1 27.7 16.2 27.7z"/>
+    <!-- Ícone WhatsApp em SVG, cor branca fixa -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+         width="26" height="26" aria-hidden="true" focusable="false">
+      <path fill="#FFFFFF" d="M19.11 17.33c-.27-.13-1.6-.78-1.85-.87-.25-.1-.43-.13-.6.13-.18.27-.7.86-.86 1.03-.16.18-.32.2-.6.07-.27-.13-1.13-.41-2.16-1.32-.8-.71-1.35-1.58-1.51-1.85-.16-.27-.02-.41.11-.54.11-.11.27-.29.41-.43.14-.14.18-.23.27-.39.09-.18.05-.33-.02-.46-.07-.13-.6-1.44-.82-1.98-.22-.53-.44-.46-.6-.46-.16 0-.33-.02-.5-.02-.18 0-.46.07-.7.33-.25.27-.95.93-.95 2.27s.97 2.64 1.11 2.82c.14.18 1.91 2.92 4.63 4.1.65.28 1.16.45 1.56.58.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.82-1.27.22-.63.22-1.17.15-1.27-.06-.09-.24-.16-.51-.29z"/>
+      <path fill="#FFFFFF" d="M27.1 4.9C24.2 2 20.3.5 16.2.5 7.8.5 1 7.3 1 15.7c0 2.7.7 5.3 2.1 7.6L1 31l7-2.1c2.3 1.3 4.9 2.1 7.6 2.1 8.4 0 15.2-6.8 15.2-15.2 0-4.1-1.6-8-4.6-10.9zM16.2 28c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.1 1.2 1.2-4.1-.3-.5C4.6 20.5 4 18.1 4 15.7 4 8.9 9.3 3.6 16.1 3.6c3.3 0 6.4 1.3 8.7 3.6s3.6 5.4 3.6 8.7C28.4 22.4 23.1 27.7 16.2 27.7z"/>
     </svg>
   </a>
 
   <script>
-    // Some o skeleton quando o Forms terminar de carregar (com failsafe)
+    // Some o skeleton quando o Forms carregar (com failsafe)
     (function(){
-      const iframe = document.querySelector('.form-iframe');
-      const sk = document.getElementById('skeleton');
+      const iframe = document.querySelector('iframe.form');
+      const sk = document.getElementById('sk');
       if (!iframe || !sk) return;
       iframe.addEventListener('load', ()=>{ sk.style.display='none'; });
-      setTimeout(()=>{ sk.style.display='none'; }, 4000); // garante sumir mesmo se o onload demorar
+      setTimeout(()=>{ sk.style.display='none'; }, 4500);
     })();
 
-    // Navegação suave nos anchors
+    // Scroll suave leve
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click', (e)=>{
         const id = a.getAttribute('href').slice(1);
