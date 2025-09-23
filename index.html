@@ -1,272 +1,386 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <title>Ativação de Garantia | Certificado Digital Profissional</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Ative sua garantia digital em poucos cliques. Certificado instantâneo, suporte prioritário e proteção completa para seu produto." />
+  <title>Ativação de Garantia • Sistema Oficial</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Ative sua garantia oficial de forma rápida e segura. Proteção completa com suporte especializado." />
   <meta name="color-scheme" content="light only" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ativação de Garantia • Sistema Oficial">
+  <meta property="og:description" content="Ative sua garantia oficial de forma rápida e segura. Proteção completa com suporte especializado.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon (SVG inline) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%233b82f6' d='M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z'/%3E%3C/svg%3E">
+
+  <!-- Fonte -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    :root {
-      --bg-primary: #0f172a;
-      --bg-secondary: #1e293b;
-      --text-primary: #f1f5f9;
-      --text-secondary: #cbd5e1;
-      --text-muted: #94a3b8;
-      --brand-purple: #8b5cf6;
-      --brand-cyan: #06b6d4;
-      --brand-gradient: linear-gradient(135deg, #8b5cf6, #06b6d4);
-      --success-bg: #ecfdf5;
-      --success-text: #065f46;
-      --success-border: #a7f3d0;
-      --error-bg: #fef2f2;
-      --error-text: #991b1b;
-      --error-border: #fecaca;
-      --glass-bg: rgba(255, 255, 255, 0.05);
-      --glass-border: rgba(255, 255, 255, 0.1);
+    :root{
+      /* Cores base */
+      --bg: #f7f9fc;
+      --bg-2: #ffffff;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+
+      /* Marca */
+      --brand: #3b82f6;
+      --brand-2: #059669;
+      --ok: #10b981;
+
+      /* UI */
+      --glass: rgba(255,255,255,0.65);
       --radius: 16px;
       --radius-sm: 12px;
-      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      --shadow-glow: 0 0 40px rgba(139, 92, 246, 0.15);
+      --shadow: 0 10px 30px rgba(2, 8, 23, 0.08);
+      --shadow-lg: 0 18px 48px rgba(15, 23, 42, 0.15);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; }
-    body {
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
-      color: var(--text-primary);
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+      color:var(--ink);
       background:
-        radial-gradient(1400px 900px at 10% 20%, rgba(139, 92, 246, 0.15), transparent 70%),
-        radial-gradient(1200px 800px at 80% 40%, rgba(6, 182, 212, 0.1), transparent 70%),
-        linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-      min-height: 100vh; overflow-x: hidden; line-height: 1.6;
-      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+        radial-gradient(1200px 600px at 70% -10%, rgba(59,130,246,.08), transparent 55%),
+        radial-gradient(1000px 600px at -10% 30%, rgba(5,150,105,.08), transparent 55%),
+        linear-gradient(180deg, var(--bg) 0%, #fff 100%);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
-    .bg-orb{ position:fixed; width:384px; height:384px; border-radius:50%; filter:blur(60px); opacity:.4; pointer-events:none; z-index:0; animation:float 20s ease-in-out infinite; }
-    .bg-orb.primary{ top:-192px; left:-192px; background: rgba(139, 92, 246, 0.2); }
-    .bg-orb.secondary{ bottom:-192px; right:-192px; background: rgba(6, 182, 212, 0.2); animation-delay:-10s; animation-duration:25s; }
-    @keyframes float{ 0%,100%{ transform: translateY(0) rotate(0) } 33%{ transform: translateY(-20px) rotate(1deg) } 66%{ transform: translateY(10px) rotate(-1deg) } }
-    @keyframes fadeIn{ from{opacity:0; transform: translateY(20px)} to{opacity:1; transform:none} }
-    @keyframes spin{ to{ transform: rotate(360deg) } }
-    .container{ position:relative; z-index:1; max-width:1280px; margin:0 auto; padding:2rem 1rem; min-height:100vh; display:flex; flex-direction:column; }
-    .header{ display:flex; align-items:center; justify-content:space-between; margin-bottom:3rem; animation: fadeIn .8s ease-out; }
-    .logo{ width:48px; height:48px; border-radius: var(--radius-sm); background: var(--brand-gradient); box-shadow: var(--shadow-glow), inset 0 1px 0 rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center; font-size:20px; }
-    .support-link{ color:var(--text-secondary); text-decoration:none; font-weight:500; font-size:.875rem; padding:.5rem 1rem; border-radius:50px; border:1px solid var(--glass-border); background: var(--glass-bg); backdrop-filter: blur(10px); transition:.3s; }
-    .support-link:hover{ color:var(--text-primary); border-color: rgba(139, 92, 246, .5); }
-    .main-content{ display:grid; grid-template-columns: 1.1fr .9fr; gap:3rem; align-items:center; flex:1; }
-    .hero{ animation: fadeIn .8s ease-out .2s both; }
-    .badge{ display:inline-flex; align-items:center; gap:.5rem; padding:.5rem 1rem; background: var(--glass-bg); border:1px solid var(--glass-border); border-radius:50px; font-size:.875rem; font-weight:500; color:var(--text-secondary); backdrop-filter: blur(10px); margin-bottom:1.5rem; }
-    .hero h1{ font-size:clamp(2rem,5vw,3.5rem); font-weight:800; line-height:1.1; margin-bottom:1rem; letter-spacing:-.02em; }
-    .gradient-text{ background: linear-gradient(135deg, #fff, #a855f7, #06b6d4, #fff); background-size:200% 200%; -webkit-background-clip:text; background-clip:text; color:transparent; animation: gradientShift 4s ease-in-out infinite; }
-    @keyframes gradientShift{ 0%,100%{ background-position:0% 50% } 50%{ background-position:100% 50% } }
-    .hero p{ font-size:clamp(1rem,2.5vw,1.125rem); color:var(--text-secondary); margin-bottom:2rem; max-width:500px; }
-    .features{ list-style:none; }
-    .features li{ display:flex; align-items:center; gap:.75rem; margin-bottom:.875rem; color:var(--text-secondary); font-size:.875rem; }
-    .check-icon{ width:20px; height:20px; border-radius:50%; background: linear-gradient(135deg, #10b981, #06b6d4); display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow: 0 4px 12px rgba(16,185,129,.3); color:#fff; }
-    .form-card{ background: var(--glass-bg); border:1px solid var(--glass-border); border-radius: var(--radius); padding:2rem; backdrop-filter: blur(20px); box-shadow: var(--shadow-lg); animation: fadeIn .8s ease-out .4s both; }
-    .form-header h2{ font-size:1.5rem; font-weight:700; margin-bottom:.5rem; color:var(--text-primary); }
-    .form-header p{ color:var(--text-muted); font-size:.875rem; margin-bottom:1.5rem; }
-    .field-group{ margin-bottom:1.25rem; }
-    .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-    label{ display:block; font-size:.875rem; font-weight:500; color:var(--text-secondary); margin-bottom:.5rem; }
-    input{
-      width:100%; padding:.875rem 1rem; background: rgba(15,23,42,.8);
-      border:1px solid rgba(148,163,184,.3); border-radius: var(--radius-sm);
-      color:var(--text-primary); font-size:1rem; font-family:inherit; transition:.3s; outline:none;
+
+    .container{max-width:1060px;margin:0 auto;padding:clamp(16px,4vw,28px);}
+
+    /* Header */
+    .header{
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
+      color:#fff;
+      border-radius:var(--radius);
+      padding:clamp(20px,4vw,28px);
+      box-shadow: var(--shadow-lg);
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+      position:relative; overflow:hidden;
     }
-    input::placeholder{ color:var(--text-muted) }
-    input:focus{ border-color: var(--brand-purple); box-shadow:0 0 0 3px rgba(139, 92, 246, .1); background: rgba(15,23,42,.95); }
-    input:invalid:not(:placeholder-shown){ border-color:#ef4444 }
+    .header::after{
+      content:"";
+      position:absolute; inset:-40% -40% auto auto;
+      width:520px; height:520px; border-radius:50%;
+      background: rgba(255,255,255,.1);
+      filter: blur(40px);
+    }
+    .header-left{ display:flex; align-items:center; gap:14px }
+    .header-icon{
+      width:56px;height:56px;display:grid;place-items:center;border-radius:14px;
+      background: rgba(255,255,255,.18);
+      backdrop-filter: blur(6px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.3);
+      flex-shrink:0;
+    }
+    .header h1{ font-size:clamp(22px,5vw,30px); font-weight:800; letter-spacing:-.02em; }
+    .header-sub{ opacity:.95; font-size:.98rem; }
+
+    .cta{ display:flex; gap:10px; flex-wrap:wrap }
     .btn{
-      width:100%; padding:1rem 1.5rem; background: var(--brand-gradient); color:#fff; border:none; border-radius: var(--radius-sm); font-size:1rem; font-weight:700; cursor:pointer; transition:.3s; box-shadow: 0 10px 30px rgba(139,92,246,.3), inset 0 1px 0 rgba(255,255,255,.1); position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; gap:.5rem;
+      display:inline-flex; align-items:center; gap:10px;
+      padding:12px 16px; border-radius:12px; border:1px solid rgba(255,255,255,.35);
+      background: rgba(255,255,255,.15);
+      color:#fff; text-decoration:none; font-weight:700; transition:.25s;
     }
-    .btn::before{ content:""; position:absolute; top:0; left:-100%; width:100%; height:100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent); transition:left .5s ease; }
-    .btn:hover::before{ left:100% } .btn:hover{ transform: translateY(-2px) }
-    .btn:disabled{ opacity:.6; cursor:not-allowed; transform:none }
-    .btn-whatsapp{
-      display:flex; align-items:center; justify-content:center; gap:.75rem; width:100%; padding:.875rem 1rem; margin-top:1rem;
-      background: rgba(37,211,102,.1); border:1px solid rgba(37,211,102,.3); border-radius: var(--radius-sm); color:#bbf7d0; text-decoration:none; font-weight:600; font-size:.875rem; transition:.3s; backdrop-filter: blur(10px);
+    .btn:hover{ transform: translateY(-2px); }
+    .btn svg{ width:18px; height:18px; }
+
+    /* Sections */
+    .benefits{ padding: clamp(18px,4vw,28px) 0; }
+    .benefits h2{ font-size:clamp(20px,3vw,26px); text-align:center; font-weight:800; margin-bottom:16px; }
+    .benefit-grid{
+      display:grid; gap:14px; grid-template-columns: repeat(4,1fr);
     }
-    .btn-whatsapp:hover{ background: rgba(37,211,102,.15); border-color: rgba(37,211,102,.5); transform: translateY(-1px) }
-    .status{ margin-top:1rem; padding:.875rem 1rem; border-radius: var(--radius-sm); font-size:.875rem; font-weight:500; display:none; }
-    .status.success{ background: var(--success-bg); color: var(--success-text); border:1px solid var(--success-border) }
-    .status.error{ background: var(--error-bg); color: var(--error-text); border:1px solid var(--error-border) }
-    .spinner{ width:16px; height:16px; border:2px solid rgba(255,255,255,.3); border-top:2px solid #fff; border-radius:50%; animation: spin 1s linear infinite; }
-    .footer{ text-align:center; margin-top:2rem; padding-top:2rem; border-top:1px solid var(--glass-border); color:var(--text-muted); font-size:.75rem }
-    @media (max-width:1024px){ .main-content{ grid-template-columns:1fr; gap:2rem } .hero{ text-align:center } }
-    @media (max-width:768px){
-      .container{ padding:1.5rem 1rem }
-      .form-card{ padding:1.5rem }
-      .field-row{ grid-template-columns:1fr }
-      .bg-orb{ width:300px; height:300px }
-      .bg-orb.primary{ top:-100px; left:-100px } .bg-orb.secondary{ bottom:-100px; right:-100px }
+    .benefit-card{
+      background: var(--bg-2); border:1px solid var(--line);
+      border-radius: var(--radius-sm); padding:16px;
+      box-shadow: var(--shadow);
+      transition:.25s;
     }
-    @media (max-width:480px){
-      .container{ padding:1rem .75rem }
-      .header{ margin-bottom:2rem }
-      .logo{ width:40px; height:40px; font-size:18px }
-      .form-card{ padding:1.25rem }
-      .support-link{ font-size:.8rem; padding:.4rem .8rem }
-      input{ font-size:16px } /* evita zoom no iOS */
+    .benefit-card:hover{ transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .benefit-content{ display:flex; align-items:flex-start; gap:12px; }
+    .benefit-icon{
+      width:40px; height:40px; border-radius:10px; display:grid; place-items:center;
+      background: rgba(59,130,246,.12); color: var(--brand); flex-shrink:0;
     }
+    .benefit-text h3{ font-size:1rem; font-weight:700; margin-bottom:4px; }
+    .benefit-text p{ font-size:.92rem; color:var(--muted); }
+
+    .form-section{ padding: clamp(8px,4vw,20px) 0 clamp(24px,6vw,36px); }
+    .form-header{ text-align:center; margin-bottom:14px; }
+    .form-header h2{ font-size:clamp(20px,3vw,26px); font-weight:800; }
+    .form-header p{ color:var(--muted); font-size:.98rem; }
+
+    .form-container{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-lg);
+      padding: clamp(14px,3vw,18px);
+    }
+    .security-notice{
+      display:flex; align-items:center; gap:10px;
+      background: rgba(16,185,129,.08);
+      border:1px solid rgba(16,185,129,.25);
+      color:#065f46; padding:10px 12px; border-radius:12px; margin-bottom:12px;
+      font-weight:600;
+    }
+
+    .iframe-wrap{
+      position:relative; overflow:hidden;
+      border-radius:12px; border:1px solid var(--line); background:#fff;
+    }
+    .skeleton{
+      position:absolute; inset:0; display:grid; place-items:center; gap:10px;
+      background: linear-gradient(90deg, #f1f5f9, #ffffff, #f1f5f9);
+      background-size: 200% 100%;
+      animation: wave 1.4s ease-in-out infinite;
+      z-index:1;
+    }
+    @keyframes wave{ 0%{background-position: 0% 0} 100%{background-position: -200% 0} }
+    .s-bar{ width:min(680px,90%); height:14px; border-radius:999px; background: rgba(148,163,184,.35); }
+    .s-bar.sm{ width:min(520px,84%); height:12px; opacity:.8 }
+    .s-bar.xs{ width:min(360px,72%); height:10px; opacity:.6 }
+
+    .form-iframe{ width:100%; height: 1200px; border:0; display:block; position:relative; z-index:2; }
+
+    .footer{
+      margin-top: clamp(22px,5vw,40px);
+      background: rgba(241,245,249,.7);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding: clamp(16px,3vw,20px);
+      box-shadow: var(--shadow);
+    }
+    .footer h3{ text-align:center; font-size:1.1rem; margin-bottom:6px; }
+    .footer-subtitle{ text-align:center; color:var(--muted); margin-bottom:16px; }
+    .contact-grid{ display:grid; gap:12px; grid-template-columns: repeat(3,1fr); }
+    .contact-card{
+      background:#fff; border:1px solid var(--line); border-radius:12px; padding:12px; box-shadow: var(--shadow);
+      transition:.2s;
+    }
+    .contact-card:active{ transform: scale(.98); }
+    .contact-info p:first-child{ font-weight:600; }
+    .contact-info p{ color:var(--muted); font-size:.95rem; }
+
+    .footer-bottom{ text-align:center; border-top:1px solid var(--line); margin-top:14px; padding-top:12px; color:var(--muted); font-size:.9rem }
+
+    /* WhatsApp FAB */
+    .whats-fab{
+      position: fixed; right: 18px; bottom: 18px;
+      width: 58px; height: 58px; border-radius: 999px;
+      display: grid; place-items: center;
+      background: #25D366; color: #fff;
+      box-shadow: 0 14px 38px rgba(37,211,102,.35);
+      border: none; cursor: pointer; z-index: 50;
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .whats-fab:hover{ transform: translateY(-2px); box-shadow: 0 18px 46px rgba(37,211,102,.45); }
+    .whats-fab:active{ transform: translateY(0); filter: brightness(.95); }
+    .whats-fab svg{ width: 28px; height: 28px; display:block; }
+
+    /* Responsivo */
+    @media (max-width:1020px){
+      .benefit-grid{ grid-template-columns: repeat(2,1fr); }
+      .contact-grid{ grid-template-columns: 1fr; }
+    }
+    @media (max-width:560px){
+      .benefit-grid{ grid-template-columns: 1fr; }
+      .form-iframe{ height: 1500px; } /* forms longos no mobile */
+    }
+
     @media (prefers-reduced-motion: reduce){
-      *,*::before,*::after{ animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
-    }
-    .btn:focus-visible,.support-link:focus-visible,.btn-whatsapp:focus-visible{ outline:2px solid var(--brand-purple); outline-offset:2px }
-    input:focus-visible{ outline:2px solid var(--brand-purple); outline-offset:2px }
-    
-    /* 👇 iframe oculto, mas não display:none (iOS/Safari precisa que exista “visível” no layout) */
-    #hidden_iframe{
-      position:absolute; width:1px; height:1px; border:0; padding:0; margin:0;
-      clip: rect(0 0 0 0); clip-path: inset(50%); overflow:hidden; opacity:0; pointer-events:none; left:-9999px; top:auto;
+      *{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
     }
   </style>
 </head>
 <body>
-  <div class="bg-orb primary" aria-hidden="true"></div>
-  <div class="bg-orb secondary" aria-hidden="true"></div>
-
   <div class="container">
-    <header class="header">
-      <div class="logo" aria-label="Certificado de Garantia">🛡️</div>
-      <a href="#" class="support-link">Atendimento</a>
+    <!-- Header -->
+    <header class="header" role="banner" aria-label="Cabeçalho">
+      <div class="header-left">
+        <div class="header-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+            <path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+          </svg>
+        </div>
+        <div>
+          <h1>Ativação de Garantia</h1>
+          <div class="header-sub">Proteja seu investimento com nossa garantia oficial</div>
+        </div>
+      </div>
+      <nav class="cta" aria-label="Atalhos">
+        <a class="btn" href="#beneficios">Benefícios</a>
+        <a class="btn" href="#ativar">Ativar agora</a>
+        <!-- CTA WhatsApp no cabeçalho -->
+        <a class="btn" href="https://wa.me/5511971374517?text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20com%20a%20garantia."
+           target="_blank" rel="noopener" aria-label="Atendimento pelo WhatsApp">
+          <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+            <path d="M19.11 17.33c-.27-.13-1.6-.78-1.85-.87-.25-.1-.43-.13-.6.13-.18.27-.7.86-.86 1.03-.16.18-.32.2-.6.07-.27-.13-1.13-.41-2.16-1.32-.8-.71-1.35-1.58-1.51-1.85-.16-.27-.02-.41.11-.54.11-.11.27-.29.41-.43.14-.14.18-.23.27-.39.09-.18.05-.33-.02-.46-.07-.13-.6-1.44-.82-1.98-.22-.53-.44-.46-.6-.46-.16 0-.33-.02-.5-.02-.18 0-.46.07-.7.33-.25.27-.95.93-.95 2.27s.97 2.64 1.11 2.82c.14.18 1.91 2.92 4.63 4.1.65.28 1.16.45 1.56.58.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.82-1.27.22-.63.22-1.17.15-1.27-.06-.09-.24-.16-.51-.29z"/>
+            <path d="M27.1 4.9C24.2 2 20.3.5 16.2.5 7.8.5 1 7.3 1 15.7c0 2.7.7 5.3 2.1 7.6L1 31l7-2.1c2.3 1.3 4.9 2.1 7.6 2.1 8.4 0 15.2-6.8 15.2-15.2 0-4.1-1.6-8-4.6-10.9z"/>
+          </svg>
+          WhatsApp
+        </a>
+      </nav>
     </header>
 
-    <main class="main-content">
-      <section class="hero">
-        <div class="badge"><span>🛡️</span><span>Certificado Digital de Garantia</span></div>
-        <h1>Ative sua <span class="gradient-text">garantia</span><br>em poucos cliques</h1>
-        <p>Complete o cadastro e receba seu certificado digital de garantia com todos os benefícios inclusos.</p>
-        <ul class="features" role="list">
-          <li><div class="check-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Certificado digital instantâneo</span></li>
-          <li><div class="check-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Suporte técnico prioritário</span></li>
-          <li><div class="check-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Notificações de manutenção</span></li>
-        </ul>
-      </section>
-
-      <section class="form-card">
-        <!-- IFRAME oculto (offscreen, não display:none) -->
-        <iframe name="hidden_iframe" id="hidden_iframe" title="Submissão do formulário" aria-hidden="true" tabindex="-1"></iframe>
-
-        <div class="form-header">
-          <h2>Ativação de Garantia</h2>
-          <p>Preencha os dados abaixo para ativar sua garantia</p>
-        </div>
-
-        <form
-          id="warrantyForm"
-          method="POST"
-          action="https://script.google.com/macros/s/AKfycbxLe6Z85ba6Ch6NwS-_K2AI60D4yiGlDMOTShsigN0x1WIx_ynLnDCRypGnwwYVLqwY/exec"
-          target="hidden_iframe"
-          accept-charset="UTF-8"
-          novalidate
-        >
-          <div class="field-group">
-            <label for="nome">Nome completo *</label>
-            <input id="nome" name="nome" type="text" placeholder="Digite seu nome completo" required autocomplete="name" />
-          </div>
-
-          <div class="field-group">
-            <label for="email">E-mail *</label>
-            <input id="email" name="email" type="email" placeholder="seu@email.com" required autocomplete="email" />
-          </div>
-
-          <div class="field-row">
-            <div class="field-group">
-              <label for="telefone">Telefone</label>
-              <input id="telefone" name="telefone" type="tel" placeholder="(11) 99999-9999" autocomplete="tel" />
-            </div>
-            <div class="field-group">
-              <label for="empresa">Empresa (opcional)</label>
-              <input id="empresa" name="empresa" type="text" placeholder="Nome da empresa" autocomplete="organization" />
+    <!-- Benefits -->
+    <section id="beneficios" class="benefits" aria-labelledby="beneficios-title">
+      <h2 id="beneficios-title">Por que ativar sua garantia?</h2>
+      <div class="benefit-grid">
+        <article class="benefit-card">
+          <div class="benefit-content">
+            <div class="benefit-icon" aria-hidden="true">🛡️</div>
+            <div class="benefit-text">
+              <h3>Proteção Completa</h3>
+              <p>Cobertura contra defeitos de fabricação com certificado digital.</p>
             </div>
           </div>
+        </article>
 
-          <button class="btn" type="submit" id="submitBtn"><span id="btnText">Ativar Garantia Agora</span></button>
+        <article class="benefit-card">
+          <div class="benefit-content">
+            <div class="benefit-icon" aria-hidden="true">⚡</div>
+            <div class="benefit-text">
+              <h3>Ativação Rápida</h3>
+              <p>Processo simples em menos de 2 minutos, sem fricção.</p>
+            </div>
+          </div>
+        </article>
 
-          <a class="btn-whatsapp" href="https://chat.whatsapp.com/SEU_GRUPO" target="_blank" rel="noopener noreferrer" aria-label="Entrar no grupo do WhatsApp para promoções">
-            <svg width="20" height="20" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-              <path fill="currentColor" d="M19.11 17.33c-.27-.13-1.6-.78-1.85-.87-.25-.1-.43-.13-.6.13-.18.27-.7.86-.86 1.03-.16.18-.32.2-.6.07-.27-.13-1.13-.41-2.16-1.32-.8-.71-1.35-1.58-1.51-1.85-.16-.27-.02-.41.11-.54.11-.11.27-.29.41-.43.14-.14.18-.23.27-.39.09-.18.05-.33-.02-.46-.07-.13-.6-1.44-.82-1.98-.22-.53-.44-.46-.6-.46-.16 0-.33-.02-.5-.02-.18 0-.46.07-.7.33-.25.27-.95.93-.95 2.27s.97 2.64 1.11 2.82c.14.18 1.91 2.92 4.63 4.1.65.28 1.16.45 1.56.58.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.82-1.27.22-.63.22-1.17.15-1.27-.06-.09-.24-.16-.51-.29z"/>
-              <path fill="currentColor" d="M27.1 4.9C24.2 2 20.3.5 16.2.5 7.8.5 1 7.3 1 15.7c0 2.7.7 5.3 2.1 7.6L1 31l7-2.1c2.3 1.3 4.9 2.1 7.6 2.1 8.4 0 15.2-6.8 15.2-15.2 0-4.1-1.6-8-4.6-10.9zM16.2 28c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.1 1.2 1.2-4.1-.3-.5C4.6 20.5 4 18.1 4 15.7 4 8.9 9.3 3.6 16.1 3.6c3.3 0 6.4 1.3 8.7 3.6s3.6 5.4 3.6 8.7C28.4 22.4 23.1 27.7 16.2 27.7z"/>
-            </svg>
-            <span>Receber ofertas no WhatsApp</span>
-          </a>
+        <article class="benefit-card">
+          <div class="benefit-content">
+            <div class="benefit-icon" aria-hidden="true">👩‍🔧</div>
+            <div class="benefit-text">
+              <h3>Suporte Especializado</h3>
+              <p>Atendimento prioritário para clientes com garantia ativa.</p>
+            </div>
+          </div>
+        </article>
 
-          <div id="status" class="status" role="alert" aria-live="polite"></div>
-        </form>
+        <article class="benefit-card">
+          <div class="benefit-content">
+            <div class="benefit-icon" aria-hidden="true">🔒</div>
+            <div class="benefit-text">
+              <h3>Privacidade</h3>
+              <p>Dados tratados com boas práticas e apenas para esta finalidade.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
 
-        <div class="footer">
-          <p>🔒 Seus dados são protegidos e não serão compartilhados com terceiros</p>
+    <!-- Form -->
+    <section id="ativar" class="form-section" aria-labelledby="form-title">
+      <div class="form-header">
+        <h2 id="form-title">Formulário de Ativação</h2>
+        <p>Preencha os dados abaixo para ativar sua garantia oficial.</p>
+      </div>
+
+      <div class="form-container">
+        <div class="security-notice" role="status" aria-live="polite">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2a7 7 0 0 1 7 7v3h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2h1V9a7 7 0 0 1 7-7Z"/>
+          </svg>
+          Suas informações são enviadas com segurança.
         </div>
-      </section>
-    </main>
+
+        <div class="iframe-wrap">
+          <div class="skeleton" id="skeleton">
+            <div class="s-bar"></div>
+            <div class="s-bar sm"></div>
+            <div class="s-bar xs"></div>
+          </div>
+
+          <!-- TROQUE o src abaixo pela sua URL do Google Forms, se necessário -->
+          <iframe
+            class="form-iframe"
+            title="Formulário de Ativação de Garantia"
+            src="https://docs.google.com/forms/d/e/1FAIpQLScGKZgmlSkm_CeESHsEyMlGibFutuNW8LPtFcGggPNWcdvvTw/viewform?embedded=true"
+            loading="lazy"
+            referrerpolicy="no-referrer">
+          </iframe>
+        </div>
+
+        <p style="text-align:center; margin-top:10px; color:var(--muted); font-size:.95rem">
+          Se o formulário não aparecer, <a href="https://docs.google.com/forms/d/e/1FAIpQLScGKZgmlSkm_CeESHsEyMlGibFutuNW8LPtFcGggPNWcdvvTw/viewform" target="_blank" rel="noopener">abra aqui</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo" aria-label="Contato e informações">
+      <h3>Precisa de ajuda?</h3>
+      <p class="footer-subtitle">Nossa equipe está pronta para atender você.</p>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-info">
+            <p>Telefone</p>
+            <p>(11) 97137-4517</p>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-info">
+            <p>E-mail</p>
+            <p>suporte@garantia.com</p>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-info">
+            <p>Atendimento</p>
+            <p>Seg a Sex: 8h–18h • Sáb: 8h–12h</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2024 Sistema de Garantia. Todos os direitos reservados.
+      </div>
+    </footer>
   </div>
 
+  <!-- FAB flutuante do WhatsApp -->
+  <a class="whats-fab"
+     href="https://wa.me/5511971374517?text=Ol%C3%A1%2C%20quero%20ativar%20minha%20garantia."
+     target="_blank" rel="noopener" aria-label="Fale conosco no WhatsApp">
+    <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+      <path d="M19.11 17.33c-.27-.13-1.6-.78-1.85-.87-.25-.1-.43-.13-.6.13-.18.27-.7.86-.86 1.03-.16.18-.32.2-.6.07-.27-.13-1.13-.41-2.16-1.32-.8-.71-1.35-1.58-1.51-1.85-.16-.27-.02-.41.11-.54.11-.11.27-.29.41-.43.14-.14.18-.23.27-.39.09-.18.05-.33-.02-.46-.07-.13-.6-1.44-.82-1.98-.22-.53-.44-.46-.6-.46-.16 0-.33-.02-.5-.02-.18 0-.46.07-.7.33-.25.27-.95.93-.95 2.27s.97 2.64 1.11 2.82c.14.18 1.91 2.92 4.63 4.1.65.28 1.16.45 1.56.58.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.82-1.27.22-.63.22-1.17.15-1.27-.06-.09-.24-.16-.51-.29z"/>
+      <path d="M27.1 4.9C24.2 2 20.3.5 16.2.5 7.8.5 1 7.3 1 15.7c0 2.7.7 5.3 2.1 7.6L1 31l7-2.1c2.3 1.3 4.9 2.1 7.6 2.1 8.4 0 15.2-6.8 15.2-15.2 0-4.1-1.6-8-4.6-10.9zM16.2 28c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.1 1.2 1.2-4.1-.3-.5C4.6 20.5 4 18.1 4 15.7 4 8.9 9.3 3.6 16.1 3.6c3.3 0 6.4 1.3 8.7 3.6s3.6 5.4 3.6 8.7C28.4 22.4 23.1 27.7 16.2 27.7z"/>
+    </svg>
+  </a>
+
   <script>
-    (function() {
-      'use strict';
-      const form = document.getElementById('warrantyForm');
-      const submitBtn = document.getElementById('submitBtn');
-      const btnText = document.getElementById('btnText');
-      const statusEl = document.getElementById('status');
-      const iframe = document.getElementById('hidden_iframe');
-
-      let isSubmitting = false;
-
-      function showStatus(message, ok = false) {
-        statusEl.textContent = message;
-        statusEl.className = 'status ' + (ok ? 'success' : 'error');
-        statusEl.style.display = 'block';
-        if (ok) setTimeout(()=>{ statusEl.style.display = 'none'; }, 5000);
-      }
-      function isValidEmail(email){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
-
-      function validateForm(){
-        const nome = document.getElementById('nome').value.trim();
-        const email = document.getElementById('email').value.trim();
-        if (!nome){ showStatus('❌ Por favor, preencha seu nome completo'); return false; }
-        if (nome.length < 2){ showStatus('❌ Nome deve ter pelo menos 2 caracteres'); return false; }
-        if (!email){ showStatus('❌ Por favor, preencha seu e-mail'); return false; }
-        if (!isValidEmail(email)){ showStatus('❌ Por favor, insira um e-mail válido'); return false; }
-        return true;
-      }
-
-      form.addEventListener('submit', function(e){
-        // deixe o form fazer o POST normal pro iframe (sem fetch, sem CORS)
-        if (isSubmitting) { e.preventDefault(); return; }
-        if (!validateForm()){ e.preventDefault(); return; }
-
-        isSubmitting = true;
-        submitBtn.disabled = true;
-        btnText.innerHTML = '<div class="spinner" aria-hidden="true"></div> Enviando...';
-        showStatus('📤 Enviando dados...', true);
-      });
-
-      // Sucesso: o iframe carregou (navegação do POST concluída)
-      iframe.addEventListener('load', function(){
-        if (!isSubmitting) return;
-        isSubmitting = false;
-        submitBtn.disabled = false;
-        btnText.textContent = 'Ativar Garantia Agora';
-        showStatus('✅ Garantia ativada com sucesso! Verifique seu e-mail.', true);
-        setTimeout(()=>{ form.reset(); }, 2000);
-      });
-
-      // UX: digitar limpa erros
-      form.querySelectorAll('input[required]').forEach(inp=>{
-        inp.addEventListener('input', ()=>{ if (statusEl.style.display !== 'none') statusEl.style.display = 'none'; });
-      });
-
-      // Máscara simples de telefone
-      const tel = document.getElementById('telefone');
-      tel.addEventListener('input', (e)=>{
-        let v = e.target.value.replace(/\D/g,'').slice(0,11);
-        if (v.length >= 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
-        if (v.length > 10) v = v.replace(/(\(\d{2}\)\s)(\d{5})(\d{0,4}).*/, (m,a,b,c)=> `${a}${b}${c?'-'+c:''}`);
-        e.target.value = v;
-      });
+    // Some o skeleton quando o Forms terminar de carregar (com failsafe)
+    (function(){
+      const iframe = document.querySelector('.form-iframe');
+      const sk = document.getElementById('skeleton');
+      if (!iframe || !sk) return;
+      iframe.addEventListener('load', ()=>{ sk.style.display='none'; });
+      setTimeout(()=>{ sk.style.display='none'; }, 4000); // garante sumir mesmo se o onload demorar
     })();
+
+    // Navegação suave nos anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior:'smooth', block:'start' });
+      });
+    });
   </script>
 </body>
 </html>
